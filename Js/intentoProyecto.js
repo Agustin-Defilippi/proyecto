@@ -12,7 +12,7 @@ const eleccionViaje = () =>{
     let paqueteViaje = prompt("ingrese que el destino donde usted quiere viajar dentro del pais"+"\n\n"+"*Norte"+"\n"+"*Centro"+"\n"+"*Sur").toLowerCase();
 
     const zonaViaje = viajes.filter(elementos => elementos.zona === paqueteViaje);
-   /*  console.log(zonaViaje); */
+
     if(zonaViaje.length > 0){
         let salida1= "";
 
@@ -23,8 +23,6 @@ const eleccionViaje = () =>{
         let destinoZonaViaje = prompt(`Ingrese que paquete de viaje desea contratar, eligiendo acorde a la zona (${paqueteViaje}) que ingreso.`).toLocaleLowerCase();
 
         const destinoViajeFinal = zonaViaje.find(elemento => elemento.destino === destinoZonaViaje);
-
-        /*  console.log(destinoViajeFinal); */
         
         let salida2="";
 
@@ -35,6 +33,7 @@ const eleccionViaje = () =>{
         alert(`Felicitaciones usted ha elegido con exito (${destinoZonaViaje}) como paquete de viaje!!! \n\n ${salida2}`);
 
         let resultado =  destinoViajeFinal;
+
         return resultado
 
     }else{
@@ -43,27 +42,42 @@ const eleccionViaje = () =>{
     
 }
 
-const efectivo = (valor) =>{
-    valor * 0.8
+
+const subTotal = (valor) =>{
+    
+    return (valor / 1.21).toFixed(2)
 }
 
 
-const vuelo = [];
+/* const vuelo = []; */
 
 const viaje = eleccionViaje();
 
-vuelo.push(viaje)
+/* vuelo.push(viaje) */
+
+let fecha = prompt("ingrese la fecha de hoy");
+
+viaje.fechaEmision= "13/10/2023"
+viaje.Iva=21;
+viaje.Subtotal = subTotal(viaje.precio);
 
 console.log(viaje);
-console.log(vuelo);
 
+/* console.log(vuelo); */
+
+
+/* 
 let total = prompt(`ingrese forma de pago para conocer el monto final del paquete contratado \n\n *Efectivo\n *3 o 6 pagos \n *Ahora 12`).toLocaleLowerCase();
 
 if(total === "efectivo"){
    
   const total1 = vuelo.map(elemento => elemento.precio * 0.8);
   console.log(total1);
-}
+
+  total1.push({iva: 1.21,})
+
+  console.log(total1);
+} */
 
 
 
