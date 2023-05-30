@@ -42,6 +42,7 @@ const eleccionViaje = () =>{
     
 }
 
+const viaje = eleccionViaje();
 
 const subTotal = (valor) =>{
     
@@ -49,24 +50,38 @@ const subTotal = (valor) =>{
 }
 
 
-/* const vuelo = []; */
+const datosPasaporte = () =>{
+    
+    alert("Completa los siguientes campos de informacion para ir generando su pasaporte");
 
-const viaje = eleccionViaje();
+    let nombrePasajero= prompt("Ingrese su nombre completo");
+    let apellidoPasajero= prompt("Ingrese su apellido");
+    let fecha = prompt("ingrese la fecha actual, por ej: 12/10/2023");
+    let provincia = prompt("ingrese provincia donde reside");
+    let ciudadSalida= prompt("Ingrese ciudad donde reside");
+    let codigoPostal= parseInt(prompt("ingrese codigo postal acorde a lo ingresado en los campos anteriores"));
 
-/* vuelo.push(viaje) */
+    viaje.entidadEmisora="Defilippi SpaceTour";
+    viaje.fechaEmision= fecha;
+    viaje.numeroPasaporte = "17235545411545215";
+    viaje.nombre= nombrePasajero;
+    viaje.apellido= apellidoPasajero
+    viaje.provincia = provincia;
+    viaje.ciudad= ciudadSalida;
+    viaje.codigoPostal= codigoPostal;
+    viaje.Iva=21;
+    viaje.Subtotal = subTotal(viaje.precio);
 
-let fecha = prompt("ingrese la fecha de hoy");
-
-viaje.fechaEmision= "13/10/2023"
-viaje.Iva=21;
-viaje.Subtotal = subTotal(viaje.precio);
-
-console.log(viaje);
-
-/* console.log(vuelo); */
+    return viaje;
+}
 
 
-/* 
+const pasaporte = datosPasaporte();
+
+console.log(pasaporte);
+
+
+
 let total = prompt(`ingrese forma de pago para conocer el monto final del paquete contratado \n\n *Efectivo\n *3 o 6 pagos \n *Ahora 12`).toLocaleLowerCase();
 
 if(total === "efectivo"){
@@ -77,7 +92,7 @@ if(total === "efectivo"){
   total1.push({iva: 1.21,})
 
   console.log(total1);
-} */
+}
 
 
 
